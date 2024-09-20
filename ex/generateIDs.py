@@ -1,8 +1,9 @@
 import sys
 sys.path.append("..")
+import icarus.datagen as dg
 
 import pandas as pd 
-import icarus.datagen as dg
+
 
 
 columns = ['Timestamp','Device ID','Device Cost', 'Device Name','Cost Center','Employee ID', 'Action']
