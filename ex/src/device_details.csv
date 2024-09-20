@@ -1,0 +1,37 @@
+Year,Manufacturer,Model,Cost,ID Start
+2020,Mac,M1 MacBook Air,$999.00 ,A
+2021,Mac,"M1 MacBook Pro 16""","$2,399.00 ",B
+2022,Mac,M2 MacBook Air,"$1,199.00 ",C
+2023,Mac,"M2 MacBook Air 15""","$1,299.00 ",D
+2023,Mac,"M2 MacBook Pro 14""","$1,999.00 ",E
+2023,Mac,"M2 MacBook Pro 16""","$2,499.00 ",F
+2024,Mac,"M3 MacBook Air 13""","$1,099.00 ",G
+2024,Mac,"M3 MacBook Air 15""","$1,299.00 ",H
+2023,Mac,"M3 MacBook Pro 14""","$1,999.00 ",I
+2023,Mac,"M3 Pro MacBook Pro 14""","$2,199.00 ",J
+2023,Mac,"M3 Pro MacBook Pro 16""","$2,499.00 ",K
+2020,Dell,XPS 13 9300,$999.99 ,L
+2021,Dell,XPS 15 9500,"$1,299.99 ",M
+2021,Dell,XPS 17 9700,"$1,399.99 ",N
+2022,Dell,XPS 13 9315,"$1,099.99 ",O
+2023,Dell,XPS 15 9510,"$1,499.99 ",P
+2023,Dell,XPS 17 9710,"$1,699.99 ",Q
+2023,Dell,Alienware m15 R6,"$2,099.99 ",R
+2024,Dell,XPS 13 9320,"$1,199.99 ",S
+2024,Dell,XPS 15 9520,"$1,599.99 ",T
+2024,Dell,XPS 17 9720,"$1,799.99 ",U
+2024,Dell,XPS 14,"$1,399.99 ",V
+2020,Microsoft,Surface Laptop 3,$999.99 ,W
+2021,Microsoft,Surface Laptop 4,"$1,299.99 ",X
+2021,Microsoft,Surface Pro 7+,$899.99 ,Y
+2022,Microsoft,Surface Laptop 5,"$1,399.99 ",Z
+2023,Microsoft,Surface Pro 8,"$1,099.99 ",0
+2023,Microsoft,Surface Laptop Studio,"$1,599.99 ",1
+2023,Microsoft,Surface Laptop Go 3,$749.99 ,2
+2024,Microsoft,Surface Laptop 6,"$1,299.99 ",3
+2024,Microsoft,Surface Pro 9,"$1,199.99 ",4
+2024,Microsoft,Surface Laptop 7,"$1,399.99 ",5
+2020,HP,Envy x360 15,$799.00,6
+2021,HP,Spectre x360 14,$1149.00,7
+2022,HP,Omen 15,$1299.00,8
+2024,HP,Spectre x360 14,$1299.00,9
