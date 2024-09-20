@@ -20,9 +20,17 @@ all_cols = [CONGESTION, TRAVEL_TIME, JAM_LENGTH]
 df = df[all_cols]
 df_pivot = df.pivot_table(JAM_LENGTH, CONGESTION,TRAVEL_TIME)
 
-print(df.describe())
+print('Generating Plot...')
+output_file = constants.output_folder + 'heatmap.png'
 
-# plt.figure(figsize=(20, 16))
-ax = sns.jointplot(y=df[CONGESTION],x=df[TRAVEL_TIME], hue=df[JAM_LENGTH])
-plt.tight_layout()
-plt.savefig(constants.output_folder + 'heatmap.png')
+
+# Create the jointplot & calculate size
+dpi = 225
+fig_size = reg.calc_fig_size(1250,dpi)
+g = sns.jointplot(y=df[CONGESTION], x=df[TRAVEL_TIME], hue=df[JAM_LENGTH], height=fig_size)
+
+plt.savefig(output_file, dpi=dpi)
+
+
+print(f"Figure saved to {output_file}")
+plt.close()

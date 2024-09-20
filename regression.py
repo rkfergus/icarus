@@ -180,3 +180,7 @@ def plot_timestamps(timestamps):
     plt.tight_layout()
     plt.savefig('out/frequency.png')
     plt.clf()
+
+def calc_fig_size(desired_px, dpi):
+    return desired_px / dpi
+
