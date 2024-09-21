@@ -4,7 +4,20 @@ import pandas as pd
 from scipy import stats
 import seaborn as sns
 
-def plot_scatter_with_regression(x, y, output_file: str, log_scale_x=False, log_scale_y=False):
+def plot_scatter_with_regression(x: np.ndarray, y: np.ndarray, output_file: str, log_scale_x: bool = False, log_scale_y: bool = False) -> None:
+    """
+    Plots a scatter plot with a regression line.
+
+    Args:
+        x (np.ndarray): Array of x values.
+        y (np.ndarray): Array of y values.
+        output_file (str): Path to save the output plot.
+        log_scale_x (bool): Whether to use a logarithmic scale for the x-axis. Default is False.
+        log_scale_y (bool): Whether to use a logarithmic scale for the y-axis. Default is False.
+
+    Returns:
+        None
+    """
     try:
         x_label = x.name
         y_label = y.name
@@ -59,6 +72,18 @@ def plot_scatter_with_regression(x, y, output_file: str, log_scale_x=False, log_
     plt.clf()
 
 def load_dataframe(filename: str) -> pd.DataFrame:
+    """
+    Loads a DataFrame from a file, supporting CSV, XLSX, and TSV formats.
+
+    Args:
+        filename (str): The path to the file to be loaded.
+
+    Returns:
+        pd.DataFrame: The loaded DataFrame.
+
+    Raises:
+        ValueError: If the file type is unsupported.
+    """
     extension = filename.split('.')[-1]
 
     # Dictionary to simulate switch statement
@@ -83,15 +108,21 @@ def load_dataframe(filename: str) -> pd.DataFrame:
 
 def create_heatmap(data,  output_file, title="Heatmap", cmap="viridis", annot=True, figsize=(10, 8), center=None):
     """
-    Creates a heatmap from a pandas DataFrame.
+    Creates a heatmap from the given data and saves it to a file.
 
-    Parameters:
-    - data (pd.DataFrame): The DataFrame containing the data for the heatmap.
-    - title (str): The title of the heatmap.
-    - cmap (str): The colormap to use for the heatmap.
-    - annot (bool): Whether to annotate the cells with their values.
-    - figsize (tuple): The size of the figure.
+    Args:
+        data (pd.DataFrame): The data to be used for the heatmap.
+        output_file (str): The path to save the output heatmap image.
+        title (str): The title of the heatmap. Default is "Heatmap".
+        cmap (str): The colormap to be used. Default is "viridis".
+        annot (bool): Whether to annotate the heatmap cells. Default is True.
+        figsize (tuple): The size of the figure as (width, height). Default is (10, 8).
+        center (float): The value at which to center the colormap. Default is None.
+
+    Returns:
+        None
     """
+
     print(center, type(center))
     plt.figure(figsize=figsize)
     sns.heatmap(data, annot=annot, cmap=cmap, center=center)
@@ -106,14 +137,18 @@ def create_heatmap(data,  output_file, title="Heatmap", cmap="viridis", annot=Tr
 
 def create_circle_heatmap(data, output_file, title="Circle Heatmap", cmap="viridis", annot=True, figsize=(10, 8)):
     """
-    Creates a heatmap with circular markers from a pandas DataFrame.
+    Creates a circular heatmap from the given data and saves it to a file.
 
-    Parameters:
-    - data (pd.DataFrame): The DataFrame containing the data for the heatmap.
-    - title (str): The title of the heatmap.
-    - cmap (str): The colormap to use for the heatmap.
-    - annot (bool): Whether to annotate the cells with their values.
-    - figsize (tuple): The size of the figure.
+    Args:
+        data (pd.DataFrame): The data to be used for the circular heatmap.
+        output_file (str): The path to save the output circular heatmap image.
+        title (str): The title of the circular heatmap. Default is "Circle Heatmap".
+        cmap (str): The colormap to be used. Default is "viridis".
+        annot (bool): Whether to annotate the heatmap cells. Default is True.
+        figsize (tuple): The size of the figure as (width, height). Default is (10, 8).
+
+    Returns:
+        None
     """
     # Create a meshgrid for plotting
     x, y = np.meshgrid(np.arange(data.shape[1]), np.arange(data.shape[0]))
@@ -149,19 +184,28 @@ def create_circle_heatmap(data, output_file, title="Circle Heatmap", cmap="virid
 
 def convert_to_float(currency_series):
     """
-    Converts a pandas Series of currency values (strings) to floats.
-    
-    Parameters:
-    currency_series (pd.Series): Series containing currency values as strings.
-    
+    Converts a series of currency values to floats.
+
+    Args:
+        currency_series (pd.Series): The series of currency values to be converted.
+
     Returns:
-    pd.Series: Series with currency values converted to floats.
+        pd.Series: The series with currency values converted to floats.
     """
     # Remove any non-numeric characters (e.g., '$', ',', etc.) and convert to float
     return currency_series.replace('[\$,%]', '', regex=True).astype(float)
 
 
 def read_all_sheets_into_df(file_path):
+    """
+    Reads all sheets from an Excel file into a dictionary of DataFrames.
+
+    Args:
+        file_path (str): The path to the Excel file.
+
+    Returns:
+        dict: A dictionary where the keys are sheet names and the values are DataFrames.
+    """
     # Read all sheets into a dictionary of DataFrames
     all_sheets = pd.read_excel(file_path, sheet_name=None)
     
