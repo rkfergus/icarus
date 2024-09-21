@@ -2,6 +2,7 @@ import sys
 sys.path.append("..")
 import icarus.regression as reg
 import icarus.constants as constants
+import icarus.canvasUtilities as canvas
 
 import pandas as pd
 import seaborn as sns
@@ -21,7 +22,7 @@ df = df[all_cols]
 df_pivot = df.pivot_table(JAM_LENGTH, CONGESTION,TRAVEL_TIME)
 
 print('Generating Plot...')
-output_file = constants.output_folder + 'heatmap.png'
+output_file = constants.output_folder + 'paris_traffic_jointplot.png'
 
 
 # Create the jointplot & calculate size
@@ -34,3 +35,6 @@ plt.savefig(output_file, dpi=dpi)
 
 print(f"Figure saved to {output_file}")
 plt.close()
+
+centered_file = constants.output_folder + 'paris_traffic_jointplot_centered.png'
+canvas.center_image_on_canvas(output_file, centered_file, canvas_size=(2500,2500))
