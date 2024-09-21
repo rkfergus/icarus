@@ -1,5 +1,11 @@
 import sys
 from PIL import Image, ImageColor
+import logging
+
+# Configure logging
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s', datefmt='%H:%M:%S')
+
+
 
 def center_image_on_canvas(input_image_path, output_image_path, canvas_size=(4000, 4000)):
     """
@@ -89,13 +95,9 @@ def create_image_grid(image_paths, output_image_path, canvas_size=(4000, 4000), 
         border_color = border
     else:
         border_color = None
-
-    # Adjust border size if needed
-    if border_color is None or border_size == 0:
-        border_size = 0
     
     # Load images and add borders if applicable
-    if border_color:
+    if border:
         images = [add_border(Image.open(img), border_size, border_color) for img in image_paths]
     else:
         images = [Image.open(img) for img in image_paths]
@@ -106,36 +108,52 @@ def create_image_grid(image_paths, output_image_path, canvas_size=(4000, 4000), 
 
     grid_image = Image.new("RGBA", (grid_width, grid_height), (0, 0, 0, 0))  # Transparent background
 
-    # Initialize offsets and heights
-    y_offsets = [0] * grid_size[0]  # Track current height for each column
+
+    # grid_offsets = [[(0, 0) for _ in range(grid_size[1])] for _ in range(grid_size[0])]
+
+    row_heights = [0 for _ in range(grid_size[0])]
+    col_widths = [0 for _ in range(grid_size[1])]
+    print(row_heights, col_widths)
 
     for index, img in enumerate(images):
         col = index % grid_size[0]  # Determine the column
         row = index // grid_size[0]  # Determine the row
 
         # Determine the starting coordinates
-        x_offset = col * (max(images[i].width for i in range(grid_size[0])) if col > 0 else 0)
-        if row == 0:
-            y_offset = 0  # First row starts at 0
+        img_width, img_height = img.size
+    
+        logging.info(f"Image: {index}, Row: {row}, Col: {col}")
+        logging.info(f"Image size: {img.size}")
+    
+        x = 0
+        if col > 0:
+            x = col_widths[col-1]
+    
+        y = 0
+        if row > 0:
+            y = row_heights[row-1]
+    
+        logging.info(f"X: {x}, Y: {y}")
+        grid_image.paste(img, (x, y))
+    
+        if img_width > col_widths[col]:
+            col_widths[col] = img_width # Update the max width in the column
+    
+        if img_height > row_heights[row]:
+            row_heights[row] = img_height # Update the max height in the row
+    
+        logging.info(f"Row heights: {row_heights}, Col widths: {col_widths}")
+    
+        # Save the grid image before checking size
+        grid_image.save(output_image_path, format='PNG')
+        logging.info(f"Grid image saved to {output_image_path}")
+    
+        # Check if the grid image is smaller than the canvas size
+        if grid_image.size[0] < canvas_size[0] or grid_image.size[1] < canvas_size[1]:
+            # Center the grid image on a larger canvas
+            centered_image = center_image_on_canvas(output_image_path, output_image_path, canvas_size)
         else:
-            y_offset = y_offsets[col]  # Use the height of the tallest image in the column
-
-        # Place the image
-        grid_image.paste(img, (x_offset, y_offset))
-
-        # Update the height tracker for the column
-        y_offsets[col] += img.height
-
-    # Save the grid image before checking size
-    grid_image.save(output_image_path, format='PNG')
-    print(f"Grid image saved to {output_image_path}")
-
-    # Check if the grid image is smaller than the canvas size
-    if grid_image.size[0] < canvas_size[0] or grid_image.size[1] < canvas_size[1]:
-        # Center the grid image on a larger canvas
-        centered_image = center_image_on_canvas(output_image_path, output_image_path, canvas_size)
-    else:
-        # If it's too large, scale it down
-        scaled_image = scale_image(grid_image, canvas_size)
-        scaled_image.save(output_image_path, format='PNG')
-        print(f"Scaled image saved to {output_image_path}")
+            # If it's too large, scale it down
+            scaled_image = scale_image(grid_image, canvas_size)
+            scaled_image.save(output_image_path, format='PNG')
+            logging.info(f"Scaled image saved to {output_image_path}")
