@@ -1,0 +1,53 @@
+,sex,Age Group,Color Importance,Storage Direction,Functionality,Price Direction,Data Transfer,Manufacturer Change,Camera Importance,Average Time,Star Rating,Year Importance
+0,Male,30-40,yes,Increase,functional,higher,yes,yes,yes,12,4,yes 
+1,Male,below 20,no,Increase,functional,higher,yes,no,yes,8,3,yes
+2,Male,30-39,no,Increase,unfunctional,higher,no,no,yes,18,2,no
+3,Female,20-29,yes,Increase,unfunctional,higher,yes,yes,yes,24,5,yes
+4,Male,40-49,no,Increase,functional,unchanged,yes,no,no,12,4,yes
+5,Female,below 20,yes,Increase,unfunctional,higher,no,yes,yes,18,5,no
+6,Female,50-59,yes,unchanged,unfunctional,unchanged,yes,no,yes,24,3,yes
+7,Male,20-29,no,unchanged,unfunctional,higher,yes,yes,yes,24,4,no
+8,Female,above 60,no,Increase,functional,higher,yes,yes,yes,18,3,yes
+9,Male,20-29,yes,Increase,functional,higher,yes,no,yes,24,1,yes
+10,Male,40-49,no,unchanged,functional,unchanged,yes,no,yes,12,2,no
+11,Female,below 20,yes,Increase,unfunctional,higher,no,yes,yes,12,3,no
+12,Female,30-39,yes,Increase,unfunctional,higher,yes,yes,yes,18,5,yes
+13,Female,40-49,no,Increase,functional,higher,yes,no,yes,12,4,yes
+14,Male,20-29,no,unchanged,unfunctional,higher,yes,yes,yes,18,3,no
+15,Female,20-29,yes,Increase,functional,higher,yes,no,yes,24,5,yes
+16,Male,30-39,yes,Increase,unfunctional,higher,no,yes,yes,36,4,no
+17,Female,50-60,yes,decrease,unfunctional,lower,no,no,no,18,3,yes
+18,Female,40-49,no,Increase,functional,higher,yes,no,yes,24,2,yes
+19,Male,40-49,no,Increase,functional,higher,yes,no,yes,36,4,no
+20,Male,20-29,yes,unchanged,unfunctional,unchanged,yes,no,yes,24,3,yes
+21,Female,30-39,yes,Increase,functional,higher,yes,no,yes,24,1,yes
+22,Male,20-29,no,unchanged,functional,unchanged,yes,yes,yes,12,4,yes
+23,Female,below 20,yes,Increase,unfunctional,higher,no,yes,yes,12,2,no
+24,Male,50-60,no,Increase,functional,higher,yes,no,yes,18,3,yes
+25,Female,20-29,yes,Increase,functional,higher,yes,yes,yes,12,2,no
+26,Male,50-60,no,unchanged,unfunctional,unchanged,yes,no,no,24,3,no
+27,Male,30-39,yes,Increase,functional,higher,yes,yes,yes,24,4,yes
+28,Female,40-49,yes,Increase,functional,higher,yes,no,yes,18,5,yes
+29,Female,20-29,no,unchanged,unfunctional,higher,no,yes,yes,12,4,no
+30,Male,40-49,no,Increase,functional,higher,yes,no,yes,12,5,yes
+31,Male,40-49,yes,Increase,functional,higher,yes,yes,yes,18,3,yes
+32,Female,50-60,no,unchanged,functional,unchanged,yes,no,yes,18,4,no
+33,Male,below 20,yes,Increase,unfunctional,higher,no,no,no,24,5,no
+34,Female,50-60,no,Increase,functional,higher,yes,yes,yes,12,5,yes
+35,Female,30-39,yes,unchanged,unfunctional,unchanged,yes,no,yes,12,3,no
+36,Female,30-39,yes,Increase,functional,higher,yes,no,yes,18,2,yes
+37,Female,30-39,no,unchanged,unfunctional,higher,no,yes,yes,24,4,no
+38,Male,20-29,no,Increase,unfunctional,higher,yes,no,yes,12,3,yes
+39,Female,above 60,no,decrease,unfunctional,lower,no,yes,no,18,5,no
+40,Male,20-29,yes,Increase,unfunctional,higher,yes,no,yes,12,4,yes
+41,Female,below 20,no,Increase,functional,higher,yes,no,yes,18,3,yes
+42,Female,20-29,yes,Increase,functional,higher,yes,yes,yes,24,2,yes
+43,Female,30-39,yes,Increase,unfunctional,higher,no,yes,yes,18,3,no
+44,Male,40-49,no,Increase,functional,higher,yes,no,yes,12,4,yes
+45,Female,50-60,no,unchanged,unfunctional,unchanged,yes,no,no,18,2,no
+46,Male,20-29,yes,Increase,functional,higher,yes,no,yes,24,4,yes
+47,Female,40-49,no,Increase,functional,higher,yes,yes,yes,12,3,yes
+48,Male,20-29,yes,unchanged,unfunctional,higher,yes,no,yes,18,1,yes
+49,Male,30-39,yes,Increase,unfunctional,higher,no,no,yes,8,3,no
+50,Female,20-29,yes,Increase,functional,higher,yes,yes,yes,12,4,yes
+51,Male,above 60,no,unchanged,functional,lower,yes,no,no,12,4,no
