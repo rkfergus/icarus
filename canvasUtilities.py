@@ -2,7 +2,17 @@ import sys
 from PIL import Image, ImageColor
 
 def center_image_on_canvas(input_image_path, output_image_path, canvas_size=(4000, 4000)):
-    """Centers an image on a transparent canvas of the specified size."""
+    """
+    Centers an image on a transparent canvas of the specified size.
+
+    Args:
+        input_image_path (str): Path to the input image file.
+        output_image_path (str): Path to save the output image file.
+        canvas_size (tuple): Size of the canvas as (width, height). Default is (4000, 4000).
+
+    Returns:
+        Image: The centered image on the canvas.
+    """
     new_image = Image.new("RGBA", canvas_size, (0, 0, 0, 0))  # Fully transparent
     heatmap_image = Image.open(input_image_path)
     heatmap_width, heatmap_height = heatmap_image.size
@@ -12,18 +22,54 @@ def center_image_on_canvas(input_image_path, output_image_path, canvas_size=(400
     return new_image  # Return the centered image
 
 def scale_image(image, max_size):
-    """Scales down an image to fit within the max size while maintaining aspect ratio."""
+    """
+    Scales down an image to fit within the max size while maintaining aspect ratio.
+
+    Args:
+        image (Image): The image to be scaled.
+        max_size (tuple): The maximum size as (width, height).
+
+    Returns:
+        Image: The scaled image.
+    """
     image.thumbnail(max_size, Image.ANTIALIAS)
     return image  # Return the scaled image
 
 def add_border(image, border_size=2, border_color=(255, 0, 0)):
-    """Adds a border around the given image."""
+    """
+    Adds a border around the given image.
+
+    Args:
+        image (Image): The image to add a border to.
+        border_size (int): The size of the border. Default is 2.
+        border_color (tuple): The color of the border as an (R, G, B) tuple. Default is red (255, 0, 0).
+
+    Returns:
+        Image: The image with the border added.
+    """
     bordered_image = Image.new("RGBA", (image.width + border_size * 2, image.height + border_size * 2), border_color)
     bordered_image.paste(image, (border_size, border_size))  # Paste the original image in the center
     return bordered_image
 
 def create_image_grid(image_paths, output_image_path, canvas_size=(4000, 4000), grid_size=(2, 2), border=None, border_size=2):
-    """Arranges a list of images in a grid, saves the result, and checks dimensions."""
+    """
+    Arranges a list of images in a grid, saves the result, and checks dimensions.
+
+    Args:
+        image_paths (list): List of paths to the image files.
+        output_image_path (str): Path to save the output image file.
+        canvas_size (tuple): Size of the canvas as (width, height). Default is (4000, 4000).
+        grid_size (tuple): Number of images in the grid as (rows, columns). Default is (2, 2).
+        border (bool/str/tuple): Border color or flag. Can be True (default red), False (no border), 
+                                 "transparent" (fully transparent), or an (R, G, B) tuple.
+        border_size (int): The size of the border. Default is 2.
+
+    Raises:
+        ValueError: If an invalid border color is provided.
+
+    Returns:
+        None
+    """
     
     # Handle border color and size logic
     if border is True:
