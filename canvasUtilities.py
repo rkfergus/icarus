@@ -1,5 +1,5 @@
 import sys
-from PIL import Image
+from PIL import Image, ImageColor
 
 def center_image_on_canvas(input_image_path, output_image_path, canvas_size=(4000, 4000)):
     """Centers an image on a transparent canvas of the specified size."""
@@ -30,7 +30,16 @@ def create_image_grid(image_paths, output_image_path, canvas_size=(4000, 4000), 
         border_color = (255, 0, 0)  # Red by default
     elif border is False or border_size == 0:
         border_color = None
-    elif isinstance(border, (str, tuple)):
+    elif isinstance(border, str):
+        if border.lower() == "transparent":
+            border_color = (0, 0, 0, 0)  # Fully transparent
+        else:
+            try:
+                border_color = ImageColor.getrgb(border)  # Convert named color or hex to RGB
+                border_color += (255,)  # Add full opacity
+            except ValueError:
+                raise ValueError(f"Invalid border color: {border}")
+    elif isinstance(border, tuple):
         border_color = border
     else:
         border_color = None
@@ -84,9 +93,3 @@ def create_image_grid(image_paths, output_image_path, canvas_size=(4000, 4000), 
         scaled_image = scale_image(grid_image, canvas_size)
         scaled_image.save(output_image_path, format='PNG')
         print(f"Scaled image saved to {output_image_path}")
-
-# Example usage
-if __name__ == "__main__":
-    image_files = ["path/to/image1.png", "path/to/image2.png"]  # Update with your image paths
-    output_file_grid = "path/to/grid_image.png"  # Update this path
-    create_image_grid(image_files, output_file_grid, canvas_size=(4000, 4000), grid_size=(2, 2), border=True, border_size=2)
