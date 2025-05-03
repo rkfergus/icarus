@@ -142,3 +142,47 @@ def random_value_in_range(
         high = row[high_label].values[0]
         return np.random.randint(low // 100, high // 100 + 1) * 100
     return None
+
+def generate_random_duration(
+    n: int,
+    min_duration: int,
+    max_duration: int
+) -> List[int]:
+    """
+    Generate a list of random durations (in seconds) within a specified range.
+
+    Parameters:
+        n (int): Number of durations to generate.
+        min_duration (int): Minimum duration in seconds.
+        max_duration (int): Maximum duration in seconds.
+
+    Returns:
+        List[int]: A list of randomly generated durations in seconds.
+    """
+    return [random.randint(min_duration, max_duration) for _ in range(n)]
+
+
+def seconds_to_hms(seconds, format_str: str = "%H:%M:%S") -> str:
+    """
+    Convert seconds to a formatted time string.
+    
+    Parameters:
+        seconds (int): Number of seconds
+        format_str (str): Format string for output (default: "%H:%M:%S")
+            Common format codes:
+            - %H: Hour (00-23)
+            - %M: Minute (00-59)
+            - %S: Second (00-59)
+            - %I: Hour (01-12)
+            - %p: AM/PM
+            
+    Returns:
+        str: Formatted time string
+    """
+    # Convert seconds to a datetime object (using a base date)
+    base_time = datetime(1900, 1, 1)  # Any base date will work
+    time_obj = base_time + seconds
+    
+    # Use strftime to format according to the specified format string
+    return time_obj.strftime(format_str)
+
