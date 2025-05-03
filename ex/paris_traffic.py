@@ -1,5 +1,4 @@
-import sys
-sys.path.append("..")
+
 import icarus.regression as reg
 import icarus.constants as constants
 

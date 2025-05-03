@@ -1,5 +1,3 @@
-import sys
-sys.path.append("..")
 import icarus.datagen as dg
 
 import pandas as pd 
